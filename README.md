@@ -30,6 +30,8 @@ so the sensitivity $dC/dE$ has units of seconds.
 
 This determines how controllable air quality is via emission reductions.
 
+For a longer conceptual explanation of the model assumptions, transport pathways, and physical interpretation, see [Physical Model Notes](physical_model.md).
+
 ---
 
 ## 🔹 Model Description
