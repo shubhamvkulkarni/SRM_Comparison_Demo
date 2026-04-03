@@ -157,13 +157,16 @@ python -m plots.plot_sai_strength_response
 
 ## 🔹 Example Result
 
-![SRM Impact](plots/srm_vs_baseline.png)
+<p align="center">
+  <img src="plots/srm_vs_baseline.png" alt="SRM Impact" width="48%">
+  <img src="plots/sai_strength_vs_air_quality_change.png" alt="SAI Strength Response" width="48%">
+</p>
 
-This figure shows how SRM-induced changes in atmospheric transport can alter the evolution of surface pollutant concentrations.
-
-![SAI Strength Response](plots/sai_strength_vs_air_quality_change.png)
-
-This figure shows how the percent change in final-time surface pollutant concentration varies as $\mathrm{SAI\_strength}$ increases from $0$ to $1$, relative to the no-SRM baseline.
+<p align="center">
+  <em>Left:</em> SRM-induced changes in atmospheric transport alter the evolution of surface pollutant concentrations.
+  <br>
+  <em>Right:</em> The percent change in final-time surface pollutant concentration varies as $\mathrm{SAI\_strength}$ increases from $0$ to $1$, relative to the no-SRM baseline.
+</p>
 
 ---
 
