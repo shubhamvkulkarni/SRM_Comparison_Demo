@@ -1,6 +1,6 @@
-# SRM Air Quality Demo Model
+# SRM Air Quality First-Order Approximation Model
 
-This repository contains a simplified, physics-informed toy model designed to explore how **solar radiation modification (SRM)**—specifically **stratospheric aerosol injection (SAI)**—may influence **air quality controllability**.
+This repository contains a simplified, physics-informed first-order approximation model designed to explore how **solar radiation modification (SRM)**, specifically **stratospheric aerosol injection (SAI)**, may influence **air quality controllability**.
 
 The model is inspired by current research questions in chemistry–climate and chemistry–transport modelling, particularly how changes in atmospheric circulation under SRM could alter the sensitivity of surface air quality to emissions.
 

@@ -1,6 +1,6 @@
 # Physical Interpretation of the Model
 
-This project implements a simplified, physically motivated toy model to explore how solar radiation modification (SRM), specifically stratospheric aerosol injection (SAI), can influence air quality and its controllability by emissions. While the model is intentionally reduced in complexity, it captures the essential processes that govern pollutant transport and removal in the atmosphere and provides insight into how large-scale circulation changes may affect surface pollution.
+This project implements a simplified, physically motivated first-order approximation model to explore how solar radiation modification (SRM), specifically stratospheric aerosol injection (SAI), can influence air quality and its controllability by emissions. While the model is intentionally reduced in complexity, it captures the essential processes that govern pollutant transport and removal in the atmosphere and provides insight into how large-scale circulation changes may affect surface pollution.
 
 ---
 
@@ -205,7 +205,7 @@ This means:
 
 ## Summary
 
-This toy model serves as a conceptual bridge between:
+This first-order approximation model serves as a conceptual bridge between:
 
 - full chemistry-climate models (e.g. UKCA, WACCM)
 - simplified, interpretable systems
