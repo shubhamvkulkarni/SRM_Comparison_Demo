@@ -10,6 +10,9 @@ This script quantifies how sensitive surface pollution is to emissions.
 Key metric:
     Sensitivity = dC / dE
 
+With the SI unit convention used here:
+    [dC/dE] = (kg m^-3) / (kg m^-3 s^-1) = s
+
 We approximate this numerically using finite differences:
 
     dC/dE ≈ (C(E + ΔE) - C(E)) / ΔE
@@ -38,6 +41,10 @@ from model.dynamics import compute_transport_rates
 def run_case(E_A, SAI_strength):
     """
     Run the model for a single emissions / SRM configuration.
+
+    Parameters:
+        E_A: Region A source term [kg m^-3 s^-1]
+        SAI_strength: dimensionless
     """
 
     config.E_A = E_A
@@ -48,6 +55,14 @@ def run_case(E_A, SAI_strength):
 def compute_sensitivity(E_base, delta_E, SAI_strength):
     """
     Compute dC/dE using a finite difference on the final concentration.
+
+    Parameters:
+        E_base: baseline Region A source term [kg m^-3 s^-1]
+        delta_E: source perturbation [kg m^-3 s^-1]
+        SAI_strength: dimensionless
+
+    Returns:
+        Sensitivities in [s]
     """
 
     original_E_A = config.E_A
@@ -78,8 +93,8 @@ def compute_sensitivity(E_base, delta_E, SAI_strength):
 
 
 def main():
-    E_base = 1.0
-    delta_E = 0.1
+    E_base = config.E_A
+    delta_E = 0.1 * config.E_A
 
     # -------------------------
     # No SRM
@@ -111,7 +126,7 @@ def main():
 
     bar_colors = ["steelblue", "darkorange"]
     bars = axes[0].bar(labels, values_A, color=bar_colors)
-    axes[0].set_ylabel("Final-time sensitivity")
+    axes[0].set_ylabel(r"Final-time sensitivity [s]")
     axes[0].set_title("Region A controllability")
     axes[0].grid(axis="y", alpha=0.3)
 
@@ -146,7 +161,7 @@ def main():
     )
     axes[1].set_xticks(list(x))
     axes[1].set_xticklabels(metric_labels)
-    axes[1].set_ylabel("dC / dE")
+    axes[1].set_ylabel(r"dC / dE [s]")
     axes[1].set_title("Sensitivity across model compartments")
     axes[1].legend()
     axes[1].grid(axis="y", alpha=0.3)
@@ -160,8 +175,8 @@ def main():
 
     plt.show()
 
-    print("No SRM transport rates:", {"k_vertical": k_v_no_srm, "k_horizontal": k_h_no_srm})
-    print("With SRM transport rates:", {"k_vertical": k_v_srm, "k_horizontal": k_h_srm})
+    print("No SRM transport rates [s^-1]:", {"k_vertical": k_v_no_srm, "k_horizontal": k_h_no_srm})
+    print("With SRM transport rates [s^-1]:", {"k_vertical": k_v_srm, "k_horizontal": k_h_srm})
     print("Sensitivity diagnostics (No SRM):", sens_no_srm)
     print("Sensitivity diagnostics (With SRM):", sens_srm)
 

@@ -14,9 +14,16 @@ which we represent as a modification of transport coefficients:
     k = k_base * (1 + α * SAI_strength)
 
 where:
-    k = transport rate (vertical or horizontal)
-    α = sensitivity parameter
-    SAI_strength = strength of SRM forcing
+    k = transport rate (vertical or horizontal) [s^-1]
+    α = sensitivity parameter [1]
+    SAI_strength = strength of SRM forcing [1]
+
+Internal model units:
+    - time: s
+    - concentration: kg m^-3
+
+For plotting, concentrations are converted to ug m^-3 and time to days
+for readability.
 
 Thus the governing equation becomes:
 
@@ -45,14 +52,20 @@ def main():
     # -------------------------
     # Plot results
     # -------------------------
+    time_days = [config.dt * i / config.SECONDS_PER_DAY for i in range(len(C_A))]
+
+    C_A_plot = C_A * config.KG_PER_M3_TO_UG_PER_M3
+    C_B_plot = C_B * config.KG_PER_M3_TO_UG_PER_M3
+    C_strat_plot = C_strat * config.KG_PER_M3_TO_UG_PER_M3
+
     plt.figure()
 
-    plt.plot(C_A, label="Region A (SRM)")
-    plt.plot(C_B, label="Region B (SRM)")
-    plt.plot(C_strat, label="Stratosphere (SRM)")
+    plt.plot(time_days, C_A_plot, label="Region A (SRM)")
+    plt.plot(time_days, C_B_plot, label="Region B (SRM)")
+    plt.plot(time_days, C_strat_plot, label="Stratosphere (SRM)")
 
-    plt.xlabel("Time step")
-    plt.ylabel("Concentration")
+    plt.xlabel("Time [days]")
+    plt.ylabel("Concentration [ug m^-3]")
     plt.title(f"SRM case (SAI_strength = {config.SAI_strength})")
     plt.legend()
 

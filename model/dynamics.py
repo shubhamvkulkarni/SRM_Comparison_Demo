@@ -28,8 +28,8 @@ Vertical exchange:
     T_v = k_v (C_strat - C)
 
 where:
-    k_h = horizontal mixing coefficient
-    k_v = vertical exchange coefficient
+    k_h = horizontal mixing coefficient [s^-1]
+    k_v = vertical exchange coefficient [s^-1]
 
 ---
 
@@ -41,8 +41,8 @@ which we represent as a change in transport efficiency:
     k = k_base (1 + α * SAI_strength)
 
 where:
-    α = sensitivity parameter
-    SAI_strength = strength of SRM forcing
+    α = sensitivity parameter [1]
+    SAI_strength = strength of SRM forcing [1]
 
 Interpretation:
 - α < 0 → reduced mixing (e.g. strat heating stabilisation)
@@ -64,6 +64,9 @@ def compute_transport_rates():
 
     k_v = base_k_vertical * (1 + α_v * SAI_strength)
     k_h = base_k_horizontal * (1 + α_h * SAI_strength)
+
+    Returns:
+        k_vertical, k_horizontal in [s^-1]
     """
 
     k_vertical = config.base_k_vertical * (
@@ -81,11 +84,14 @@ def transport_terms(C_A, C_B, C_strat):
     """
     Compute transport contributions for each region
 
+    Inputs:
+        C_A, C_B, C_strat in [kg m^-3]
+
     Returns:
-        T_A_vert  = vertical transport into A
-        T_B_vert  = vertical transport into B
-        T_A_horiz = horizontal transport into A
-        T_B_horiz = horizontal transport into B
+        T_A_vert  = vertical transport into A [kg m^-3 s^-1]
+        T_B_vert  = vertical transport into B [kg m^-3 s^-1]
+        T_A_horiz = horizontal transport into A [kg m^-3 s^-1]
+        T_B_horiz = horizontal transport into B [kg m^-3 s^-1]
 
     Formulas:
 

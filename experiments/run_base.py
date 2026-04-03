@@ -26,6 +26,13 @@ Outputs:
     Region A (C_A)
     Region B (C_B)
     Stratosphere (C_strat)
+
+Internal model units:
+    - time: s
+    - concentration: kg m^-3
+
+For plotting, concentrations are converted to ug m^-3 and time to days
+for readability.
 """
 
 import matplotlib.pyplot as plt
@@ -48,14 +55,20 @@ def main():
     # -------------------------
     # Plot results
     # -------------------------
+    time_days = [config.dt * i / config.SECONDS_PER_DAY for i in range(len(C_A))]
+
+    C_A_plot = C_A * config.KG_PER_M3_TO_UG_PER_M3
+    C_B_plot = C_B * config.KG_PER_M3_TO_UG_PER_M3
+    C_strat_plot = C_strat * config.KG_PER_M3_TO_UG_PER_M3
+
     plt.figure()
 
-    plt.plot(C_A, label="Region A (high emissions)")
-    plt.plot(C_B, label="Region B (low emissions)")
-    plt.plot(C_strat, label="Stratosphere")
+    plt.plot(time_days, C_A_plot, label="Region A (high emissions)")
+    plt.plot(time_days, C_B_plot, label="Region B (low emissions)")
+    plt.plot(time_days, C_strat_plot, label="Stratosphere")
 
-    plt.xlabel("Time step")
-    plt.ylabel("Concentration")
+    plt.xlabel("Time [days]")
+    plt.ylabel("Concentration [ug m^-3]")
     plt.title("Baseline (No SRM)")
     plt.legend()
 

@@ -12,9 +12,9 @@ We model concentration evolution as:
     dC/dt = E - λC
 
 where:
-    C = concentration (pollution)
-    E = emissions (source term)
-    λ = removal rate (loss processes)
+    C = concentration [kg m^-3]
+    E = emissions/source term [kg m^-3 s^-1]
+    λ = removal rate [s^-1]
 
 This is a simplified representation of:
     - emissions from surface sources
@@ -33,8 +33,8 @@ def emissions():
     """
     Return emissions for regions A and B
 
-    E_A: emissions in region A (e.g. high-emission region)
-    E_B: emissions in region B (e.g. low-emission region)
+    E_A: source term in region A [kg m^-3 s^-1]
+    E_B: source term in region B [kg m^-3 s^-1]
 
     These are control variables in the system.
     """
@@ -48,7 +48,10 @@ def removal(C_A, C_B):
         R = -λC
 
     where:
-        λ = removal rate
+        λ = removal rate [s^-1]
+
+    Returns:
+        R_A, R_B with units [kg m^-3 s^-1]
 
     Applied independently to each region.
     """

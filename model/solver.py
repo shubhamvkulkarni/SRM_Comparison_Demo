@@ -28,8 +28,12 @@ For Stratosphere:
     dC_strat/dt = -k_v[(C_strat - C_A) + (C_strat - C_B)]
 
 where:
-    k_h = horizontal mixing (A ↔ B)
-    k_v = vertical exchange (strat ↔ trop)
+    t = time [s]
+    C = concentration [kg m^-3]
+    E = source term [kg m^-3 s^-1]
+    λ = removal rate [s^-1]
+    k_h = horizontal mixing (A ↔ B) [s^-1]
+    k_v = vertical exchange (strat ↔ trop) [s^-1]
 
 SRM affects k_h and k_v (handled in dynamics.py)
 
@@ -46,7 +50,10 @@ from model.dynamics import transport_terms, compute_transport_rates
 
 def run_model():
     """
-    Run time integration and return concentration time series
+    Run time integration and return concentration time series.
+
+    Returns:
+        Arrays of C_A, C_B, C_strat in [kg m^-3]
     """
 
     # initialise state
@@ -72,16 +79,16 @@ def run_model():
 
         k_vertical, _ = compute_transport_rates()
 
-        # --- tendencies (dC/dt) ---
+        # --- tendencies (dC/dt) [kg m^-3 s^-1] ---
         dC_A = E_A + R_A + T_A_vert + T_A_horiz
         dC_B = E_B + R_B + T_B_vert + T_B_horiz
 
-        # stratosphere loses/gains via vertical exchange
+        # Stratosphere loses/gains via vertical exchange [kg m^-3 s^-1].
         dC_strat = -k_vertical * (
             (C_strat - C_A) + (C_strat - C_B)
         )
 
-        # --- time stepping (Euler) ---
+        # --- time stepping (Euler): C_new = C_old + dt * dC/dt ---
         C_A += config.dt * dC_A
         C_B += config.dt * dC_B
         C_strat += config.dt * dC_strat

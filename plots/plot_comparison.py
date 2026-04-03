@@ -13,6 +13,13 @@ We plot:
 
 This directly demonstrates:
     SRM → transport change → air quality impact
+
+Internal model units:
+    - time: s
+    - concentration: kg m^-3
+
+For the figure, time is shown in days and concentration in ug m^-3
+for readability.
 """
 
 import matplotlib.pyplot as plt
@@ -35,13 +42,17 @@ def main():
     C_srm = run_case(SAI_strength=0.5)
 
     # Plot
+    time_days = [config.dt * i / config.SECONDS_PER_DAY for i in range(len(C_base))]
+    C_base_plot = C_base * config.KG_PER_M3_TO_UG_PER_M3
+    C_srm_plot = C_srm * config.KG_PER_M3_TO_UG_PER_M3
+
     plt.figure()
 
-    plt.plot(C_base, label="No SRM", linewidth=2)
-    plt.plot(C_srm, label="With SRM", linewidth=2)
+    plt.plot(time_days, C_base_plot, label="No SRM", linewidth=2)
+    plt.plot(time_days, C_srm_plot, label="With SRM", linewidth=2)
 
-    plt.xlabel("Time step")
-    plt.ylabel("Concentration (Region A)")
+    plt.xlabel("Time [days]")
+    plt.ylabel("Region A concentration [ug m^-3]")
     plt.title("Impact of SRM on Air Quality")
 
     plt.legend()

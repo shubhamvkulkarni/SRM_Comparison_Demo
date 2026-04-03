@@ -23,8 +23,10 @@ A key quantity of interest is:
 ```
 
 where:
-- $C$ = surface pollutant concentration  
-- $E$ = emissions  
+- $C$ = surface pollutant concentration, in kg m$^{-3}$  
+- $E$ = emissions/source term, in kg m$^{-3}$ s$^{-1}$  
+
+so the sensitivity $dC/dE$ has units of seconds.
 
 This determines how controllable air quality is via emission reductions.
 
@@ -53,9 +55,10 @@ The governing equations are:
 ```
 
 where:
-- $\lambda$ = removal rate  
-- $k_h$ = horizontal mixing (cross-boundary transport)  
-- $k_v$ = vertical exchange (stratosphere-troposphere coupling)
+- $t$ = time, in s  
+- $\lambda$ = removal rate, in s$^{-1}$  
+- $k_h$ = horizontal mixing (cross-boundary transport), in s$^{-1}$  
+- $k_v$ = vertical exchange (stratosphere-troposphere coupling), in s$^{-1}$
 
 ---
 
@@ -68,6 +71,20 @@ k = k_{\text{base}} (1 + \alpha \cdot \text{SAI\_strength})
 ```
 
 This reflects how stratospheric aerosols may modify circulation and transport efficiency.
+
+In the code, `SAI_strength`, `alpha_vertical`, and `alpha_horizontal` are dimensionless.
+
+## 🔹 Unit Convention
+
+The model now uses a consistent internal SI convention:
+
+- Time: s
+- Concentration: kg m$^{-3}$
+- Emissions/source term: kg m$^{-3}$ s$^{-1}$
+- Removal and transport coefficients: s$^{-1}$
+- Sensitivity $dC/dE$: s
+
+For plotting only, concentrations are converted to µg m$^{-3}$ and time to days so figures are easier to read.
 
 ---
 
