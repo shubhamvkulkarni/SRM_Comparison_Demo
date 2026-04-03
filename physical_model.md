@@ -36,17 +36,7 @@ where:
 
 The system can be visualised as follows:
 
-```text
-              STRATOSPHERE (C_strat)
-                    |
-                    |  k_v (vertical exchange)
-                    ↓
-     -----------------------------------------
-     |                                       |
-     |                                       |
- Region A (C_A)   ←→  k_h (horizontal)   Region B (C_B)
- (high emissions)                         (low emissions)
-```
+![Model geometry](plots/diagram.jpg)
 
 ### Horizontal Transport ($k_h$)
 
