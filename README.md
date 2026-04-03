@@ -18,13 +18,13 @@ These changes may influence how surface pollution responds to emissions, especia
 
 A key quantity of interest is:
 
-\[
+```math
 \text{Air Quality Sensitivity} = \frac{dC}{dE}
-\]
+```
 
 where:
-- \( C \) = surface pollutant concentration  
-- \( E \) = emissions  
+- $C$ = surface pollutant concentration  
+- $E$ = emissions  
 
 This determines how controllable air quality is via emission reductions.
 
@@ -40,22 +40,22 @@ We implement a minimal two-region + stratosphere system:
 
 The governing equations are:
 
-\[
+```math
 \frac{dC_A}{dt} = E_A - \lambda C_A + k_h (C_B - C_A) + k_v (C_{\text{strat}} - C_A)
-\]
+```
 
-\[
+```math
 \frac{dC_B}{dt} = E_B - \lambda C_B + k_h (C_A - C_B) + k_v (C_{\text{strat}} - C_B)
-\]
+```
 
-\[
+```math
 \frac{dC_{\text{strat}}}{dt} = -k_v[(C_{\text{strat}} - C_A) + (C_{\text{strat}} - C_B)]
-\]
+```
 
 where:
-- \( \lambda \) = removal rate  
-- \( k_h \) = horizontal mixing (cross-boundary transport)  
-- \( k_v \) = vertical exchange (stratosphere–troposphere coupling)
+- $\lambda$ = removal rate  
+- $k_h$ = horizontal mixing (cross-boundary transport)  
+- $k_v$ = vertical exchange (stratosphere-troposphere coupling)
 
 ---
 
@@ -63,9 +63,9 @@ where:
 
 SRM is represented as a perturbation to atmospheric transport:
 
-\[
+```math
 k = k_{\text{base}} (1 + \alpha \cdot \text{SAI\_strength})
-\]
+```
 
 This reflects how stratospheric aerosols may modify circulation and transport efficiency.
 
@@ -84,9 +84,9 @@ This reflects how stratospheric aerosols may modify circulation and transport ef
 ### 3. Sensitivity Analysis (Key Result)
 - `run_sensitivity.py`
 - Computes:
-  \[
+  ```math
   \frac{dC}{dE} \approx \frac{C(E + \Delta E) - C(E)}{\Delta E}
-  \]
+  ```
 
 - Compares:
   - No SRM vs SRM
