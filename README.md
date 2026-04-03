@@ -178,8 +178,10 @@ It demonstrates how physically motivated reduced-order models can be used to exp
 
 ---
 
-🔹 Author
+## 🔹 Author
 
 Shubham Kulkarni
+
 DPhil, Atmospheric, Oceanic and Planetary Physics
+
 University of Oxford
