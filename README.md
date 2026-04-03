@@ -23,10 +23,10 @@ A key quantity of interest is:
 ```
 
 where:
-- $C$ = surface pollutant concentration, in kg m$^{-3}$  
-- $E$ = emissions/source term, in kg m$^{-3}$ s$^{-1}$  
+- $C$ = surface pollutant concentration, in $\,\mathrm{kg\,m^{-3}}$  
+- $E$ = emissions/source term, in $\,\mathrm{kg\,m^{-3}\,s^{-1}}$  
 
-so the sensitivity $dC/dE$ has units of seconds.
+so the sensitivity $dC/dE$ has units of $\,\mathrm{s}$.
 
 This determines how controllable air quality is via emission reductions.
 
@@ -57,10 +57,10 @@ The governing equations are:
 ```
 
 where:
-- $t$ = time, in s  
-- $\lambda$ = removal rate, in s$^{-1}$  
-- $k_h$ = horizontal mixing (cross-boundary transport), in s$^{-1}$  
-- $k_v$ = vertical exchange (stratosphere-troposphere coupling), in s$^{-1}$
+- $t$ = time, in $\,\mathrm{s}$  
+- $\lambda$ = removal rate, in $\,\mathrm{s^{-1}}$  
+- $k_h$ = horizontal mixing (cross-boundary transport), in $\,\mathrm{s^{-1}}$  
+- $k_v$ = vertical exchange (stratosphere-troposphere coupling), in $\,\mathrm{s^{-1}}$
 
 ---
 
@@ -69,24 +69,24 @@ where:
 SRM is represented as a perturbation to atmospheric transport:
 
 ```math
-k = k_{\text{base}} (1 + \alpha \cdot \text{SAI\_strength})
+k = k_{\text{base}} \left(1 + \alpha \cdot \mathrm{SAI\_strength}\right)
 ```
 
 This reflects how stratospheric aerosols may modify circulation and transport efficiency.
 
-In the code, `SAI_strength`, `alpha_vertical`, and `alpha_horizontal` are dimensionless.
+In the code, $\mathrm{SAI\_strength}$, $\alpha_{\mathrm{vertical}}$, and $\alpha_{\mathrm{horizontal}}$ are dimensionless.
 
 ## 🔹 Unit Convention
 
 The model now uses a consistent internal SI convention:
 
-- Time: s
-- Concentration: kg m$^{-3}$
-- Emissions/source term: kg m$^{-3}$ s$^{-1}$
-- Removal and transport coefficients: s$^{-1}$
-- Sensitivity $dC/dE$: s
+- Time: $\,\mathrm{s}$
+- Concentration: $\,\mathrm{kg\,m^{-3}}$
+- Emissions/source term: $\,\mathrm{kg\,m^{-3}\,s^{-1}}$
+- Removal and transport coefficients: $\,\mathrm{s^{-1}}$
+- Sensitivity $dC/dE$: $\,\mathrm{s}$
 
-For plotting only, concentrations are converted to µg m$^{-3}$ and time to days so figures are easier to read.
+For plotting only, concentrations are converted to $\,\mathrm{\mu g\,m^{-3}}$ and time to days so figures are easier to read.
 
 ---
 
