@@ -74,14 +74,14 @@ Stratospheric aerosol injection introduces particles into the stratosphere, whic
 In this model, these effects are represented as a perturbation to transport coefficients:
 
 ```math
-k = k_{\text{base}} (1 + \alpha \cdot \text{SAI\_strength})
+k = k_{\text{base}} \left(1 + \alpha \cdot \mathrm{SAI\_strength}\right)
 ```
 
 where:
 
 - $k_{\text{base}}$ is the baseline transport rate
 - $\alpha$ is a sensitivity parameter
-- $\text{SAI\_strength}$ represents the intensity of SRM
+- $\mathrm{SAI\_strength}$ represents the intensity of SRM
 
 A negative $\alpha$ corresponds to reduced mixing, which is physically plausible if stratospheric heating stabilises atmospheric layers or alters circulation patterns.
 
