@@ -13,6 +13,7 @@ ACCENT_LIGHT = "#D8ECE4"
 INK = "#17332D"
 WARM = "#C46A2E"
 GOLD = "#C6A546"
+DIAGRAM_PATH = "plots/diagram.jpg"
 
 
 def apply_page_style():
@@ -77,6 +78,18 @@ def apply_page_style():
             font-size: 0.90rem;
             color: rgba(23, 51, 45, 0.80);
             margin-top: 0.25rem;
+        }}
+        .hero-text {{
+            font-size: 1.02rem;
+            line-height: 1.65;
+            color: rgba(23, 51, 45, 0.90);
+        }}
+        .hero-image-wrap {{
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(23, 51, 45, 0.08);
+            border-radius: 18px;
+            padding: 0.65rem;
+            box-shadow: 0 12px 35px rgba(25, 46, 40, 0.08);
         }}
         </style>
         """,
@@ -190,18 +203,30 @@ def main():
     apply_page_style()
     defaults = current_defaults()
 
-    st.markdown(
-        """
-        <div class="hero-card">
-            <h1>SRM Air Quality Explorer</h1>
-            <p>
-                Adjust SRM transport controls, optionally edit the emissions defaults,
-                and inspect how the toy model responds across the full set of plots.
-            </p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    left_col, right_col = st.columns([1.45, 1.0], gap="large")
+    with left_col:
+        st.markdown(
+            """
+            <div class="hero-card">
+                <h1>SRM Air Quality Explorer</h1>
+                <div class="hero-text">
+                    This interactive toy model tracks pollutant concentrations in two surface regions
+                    and the stratosphere. Solar radiation modification is represented as a change in
+                    atmospheric transport efficiency, so when you move the SRM controls you are testing
+                    how altered vertical exchange and cross-boundary mixing reshape air quality.
+                    <br><br>
+                    The plots below compare the no-SRM baseline with the active scenario, show how final
+                    concentrations respond across a sweep of SAI strengths, and estimate how controllable
+                    pollution remains through emission changes.
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with right_col:
+        st.markdown('<div class="hero-image-wrap">', unsafe_allow_html=True)
+        st.image(DIAGRAM_PATH, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
     with st.sidebar:
         st.header("Scenario Controls")
