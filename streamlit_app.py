@@ -91,6 +91,12 @@ def apply_page_style():
             padding: 0.65rem;
             box-shadow: 0 12px 35px rgba(25, 46, 40, 0.08);
         }}
+        .hero-caption {{
+            font-size: 0.95rem;
+            color: rgba(23, 51, 45, 0.78);
+            margin-top: 0.55rem;
+            text-align: center;
+        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -210,14 +216,15 @@ def main():
             <div class="hero-card">
                 <h1>SRM Air Quality Explorer</h1>
                 <div class="hero-text">
-                    This interactive toy model tracks pollutant concentrations in two surface regions
-                    and the stratosphere. Solar radiation modification is represented as a change in
-                    atmospheric transport efficiency, so when you move the SRM controls you are testing
-                    how altered vertical exchange and cross-boundary mixing reshape air quality.
+                    This interactive model presents a simple first-order approximation of pollutant
+                    concentrations in two surface regions and the stratosphere. Solar radiation
+                    modification is represented as a perturbation to atmospheric transport efficiency,
+                    so when you adjust the SRM controls you are testing how altered vertical exchange
+                    and cross-boundary mixing reshape regional air quality.
                     <br><br>
-                    The plots below compare the no-SRM baseline with the active scenario, show how final
-                    concentrations respond across a sweep of SAI strengths, and estimate how controllable
-                    pollution remains through emission changes.
+                    The diagnostics below compare the no-SRM baseline with the active scenario, show how
+                    final concentrations respond across a sweep of SAI strengths, and estimate how air
+                    quality controllability changes in response to emission perturbations.
                 </div>
             </div>
             """,
@@ -226,6 +233,10 @@ def main():
     with right_col:
         st.markdown('<div class="hero-image-wrap">', unsafe_allow_html=True)
         st.image(DIAGRAM_PATH, use_container_width=True)
+        st.markdown(
+            '<div class="hero-caption">Model geometry and transport processes are visualised above.</div>',
+            unsafe_allow_html=True,
+        )
         st.markdown("</div>", unsafe_allow_html=True)
 
     with st.sidebar:
