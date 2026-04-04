@@ -128,9 +128,9 @@ def create_timeseries_figure(case, sai_strength):
     ax.plot(case["time_days"], case["C_A_ug_m3"], label="Region A", color=ACCENT, linewidth=2.6)
     ax.plot(case["time_days"], case["C_B_ug_m3"], label="Region B", color=WARM, linewidth=2.6)
     ax.plot(case["time_days"], case["C_strat_ug_m3"], label="Stratosphere", color=GOLD, linewidth=2.2)
-    ax.set_xlabel("Time [days]")
-    ax.set_ylabel("Concentration [ug m^-3]")
-    ax.set_title(f"Concentration evolution at SAI_strength = {sai_strength:.2f}")
+    ax.set_xlabel(r"Time [$\mathrm{days}$]")
+    ax.set_ylabel(r"Concentration [$\mu\mathrm{g\,m^{-3}}$]")
+    ax.set_title(rf"Concentration evolution at $\mathrm{{SAI\ strength}} = {sai_strength:.2f}$")
     ax.grid(alpha=0.25)
     ax.legend(frameon=False)
     fig.tight_layout()
@@ -153,8 +153,8 @@ def create_comparison_figure(baseline_case, active_case):
         color=WARM,
         linewidth=2.4,
     )
-    ax.set_xlabel("Time [days]")
-    ax.set_ylabel("Region A concentration [ug m^-3]")
+    ax.set_xlabel(r"Time [$\mathrm{days}$]")
+    ax.set_ylabel(r"Region A concentration [$\mu\mathrm{g\,m^{-3}}$]")
     ax.set_title("Baseline versus current SRM case")
     ax.grid(alpha=0.25)
     ax.legend(frameon=False)
@@ -167,8 +167,8 @@ def create_sai_response_figure(sai_values, percent_change_a, percent_change_b):
     ax.plot(sai_values, percent_change_a, label="Region A", color=ACCENT, linewidth=2.5)
     ax.plot(sai_values, percent_change_b, label="Region B", color=WARM, linewidth=2.5)
     ax.axhline(0.0, color=INK, linestyle="--", linewidth=1.0, alpha=0.6)
-    ax.set_xlabel("SAI strength [1]")
-    ax.set_ylabel("Final concentration change [%]")
+    ax.set_xlabel(r"$\mathrm{SAI\ strength}$ [1]")
+    ax.set_ylabel(r"Final concentration change [$\%$]")
     ax.set_title("Surface air-quality response across SAI strengths")
     ax.grid(alpha=0.25)
     ax.legend(frameon=False)
@@ -197,7 +197,7 @@ def create_sensitivity_figure(baseline_sensitivity, active_sensitivity):
     ax.bar(x + width / 2, active_values, width=width, label="Current SRM", color=WARM)
     ax.set_xticks(x)
     ax.set_xticklabels(labels)
-    ax.set_ylabel("dC / dE [s]")
+    ax.set_ylabel(r"$dC/dE$ [$\mathrm{s}$]")
     ax.set_title("Air-quality controllability")
     ax.grid(axis="y", alpha=0.25)
     ax.legend(frameon=False)
@@ -226,14 +226,11 @@ def main():
             unsafe_allow_html=True,
         )
         st.markdown(
-            r"""
-            The state variables are $C_A$, $C_B$, and $C_{\mathrm{strat}}$ with units
-            $\mathrm{kg\,m^{-3}}$, the emissions are $E_A$ and $E_B$ with units
-            $\mathrm{kg\,m^{-3}\,s^{-1}}$, and the transport coefficients are
-            $k_v$ and $k_h$ with units $\mathrm{s^{-1}}$. The diagnostics below compare the
-            no-SRM baseline with the active scenario, show how final concentrations respond
-            across a sweep of $\mathrm{SAI\_strength}$, and estimate how air-quality
-            controllability changes in response to emission perturbations.
+            """
+            The diagnostics below compare the no-SRM baseline with the active scenario,
+            show how final concentrations respond across a sweep of SAI strength, and
+            estimate how air-quality controllability changes in response to emission
+            perturbations.
             """
         )
         st.markdown(
@@ -255,21 +252,21 @@ def main():
     with st.sidebar:
         st.header("Scenario Controls")
         sai_strength = st.slider(
-            "SAI_strength",
+            "SAI strength",
             min_value=0.0,
             max_value=1.0,
             value=float(defaults["SAI_strength"]),
             step=0.01,
         )
         alpha_vertical = st.slider(
-            "alpha_vertical",
+            "α_vertical",
             min_value=-1.5,
             max_value=1.5,
             value=float(defaults["alpha_vertical"]),
             step=0.01,
         )
         alpha_horizontal = st.slider(
-            "alpha_horizontal",
+            "α_horizontal",
             min_value=-1.5,
             max_value=1.5,
             value=float(defaults["alpha_horizontal"]),
