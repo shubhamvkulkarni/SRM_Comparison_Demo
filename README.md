@@ -151,6 +151,18 @@ python -m plots.plot_comparison
 python -m plots.plot_sai_strength_response
 ```
 
+### Streamlit Interface
+
+```bash
+pip install -r requirements-streamlit.txt
+streamlit run streamlit_app.py
+```
+
+The Streamlit app provides:
+- sliders for `SAI_strength`, `alpha_vertical`, and `alpha_horizontal`
+- editable text boxes for `E_a` and `E_b`
+- all key model plots in one interface
+
 
 ---
 
