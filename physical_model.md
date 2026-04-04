@@ -87,6 +87,27 @@ A negative $\alpha$ corresponds to reduced mixing, which is physically plausible
 
 ---
 
+## Model Assumptions
+
+This model is intentionally idealised. Its main assumptions are:
+
+- **First-order approximation throughout:** the system is represented using linear source, sink, and transport terms, so the response of concentration to emissions and transport changes is assumed to be approximately first-order.
+- **Highly simplified atmospheric geometry:** the atmosphere is reduced to a simple two-slab troposphere plus one stratospheric reservoir, rather than a fully resolved three-dimensional circulation.
+- **Troposphere divided into two blocks only:** the lower atmosphere is represented by Region A and Region B, so spatial gradients within each region are neglected.
+- **Generic pollutant treatment:** the model follows a single passive pollutant-like tracer, rather than representing multiple chemical species or detailed atmospheric chemistry.
+- **Linear removal assumption:** pollutant loss is approximated by a first-order decay term $-\lambda C$, so removal processes such as deposition and chemistry are lumped into a single effective rate.
+- **Linear exchange between compartments:** both horizontal and vertical transport are represented as simple diffusive-style exchange terms proportional to concentration differences.
+- **Stratosphere treated as a well-mixed box:** the stratosphere is assumed to behave as a single reservoir mediating vertical coupling, without internal structure or zonal variability.
+- **SRM affects transport only:** SAI is assumed not to directly alter emissions or introduce explicit chemical perturbations in this toy model; its role is limited to changing transport efficiency.
+- **Simplified SAI forcing strength:** `SAI_strength` is a dimensionless control parameter that provides an idealised measure of SRM intensity, rather than a direct physical quantity such as aerosol optical depth, sulfur injection rate, or radiative forcing.
+- **Independent vertical and horizontal SRM sensitivities:** $\alpha_{\text{vertical}}$ and $\alpha_{\text{horizontal}}$ are prescribed parameters that independently scale the response of $k_v$ and $k_h$ to SRM.
+- **Time-invariant parameters within a run:** emissions, removal, baseline transport, and SRM-response parameters are held constant during each simulation, so seasonal and episodic variability are neglected.
+- **Zero initial concentrations in default experiments:** the standard setup begins from a clean initial state, which simplifies the transient adjustment toward the model equilibrium.
+
+These assumptions make the model unsuitable for quantitative prediction, but useful for isolating the qualitative mechanisms by which SRM-driven transport changes may influence air quality and its controllability.
+
+---
+
 ## Meaning of Model Parameters
 
 ### Emissions
