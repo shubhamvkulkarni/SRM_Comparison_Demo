@@ -211,27 +211,26 @@ def main():
 
     left_col, right_col = st.columns([1.45, 1.0], gap="large")
     with left_col:
-        st.markdown('<div class="hero-card">', unsafe_allow_html=True)
-        st.markdown("## SRM Air Quality Explorer")
         st.markdown(
             """
-            <div class="hero-text">
-            This interactive model presents a simple first-order approximation of pollutant
-            concentrations in two surface regions and the stratosphere. Solar radiation
-            modification is represented as a perturbation to atmospheric transport efficiency,
-            so when you adjust the SRM controls you are testing how altered vertical exchange
-            and cross-boundary mixing reshape regional air quality. The diagnostics below compare
-            the no-SRM baseline with the active scenario, show how final concentrations respond
-            across a sweep of SAI strength, and estimate how air-quality controllability changes
-            in response to emission perturbations. For further explanation of the physical model
-            and variables, see the
-            <a href="https://github.com/shubhamvkulkarni/SRM_Comparison_Demo/blob/main/physical_model.md">physical model notes</a>.
+            <div class="hero-card">
+                <h1>SRM Air Quality Explorer</h1>
+                <div class="hero-text">
+                    This interactive model presents a simple first-order approximation of pollutant
+                    concentrations in two surface regions and the stratosphere. Solar radiation
+                    modification is represented as a perturbation to atmospheric transport efficiency,
+                    so when you adjust the SRM controls you are testing how altered vertical exchange
+                    and cross-boundary mixing reshape regional air quality. The diagnostics below compare
+                    the no-SRM baseline with the active scenario, show how final concentrations respond
+                    across a sweep of SAI strength, and estimate how air-quality controllability changes
+                    in response to emission perturbations. For further explanation of the physical model
+                    and variables, see the
+                    <a href="https://github.com/shubhamvkulkarni/SRM_Comparison_Demo/blob/main/physical_model.md">physical model notes</a>.
+                </div>
             </div>
-            """
-            ,
+            """,
             unsafe_allow_html=True,
         )
-        st.markdown("</div>", unsafe_allow_html=True)
     with right_col:
         st.markdown('<div class="hero-image-wrap">', unsafe_allow_html=True)
         st.image(DIAGRAM_PATH, use_container_width=True)
