@@ -214,30 +214,22 @@ def main():
         st.markdown('<div class="hero-card">', unsafe_allow_html=True)
         st.markdown("## SRM Air Quality Explorer")
         st.markdown(
-            r"""
+            """
             <div class="hero-text">
             This interactive model presents a simple first-order approximation of pollutant
             concentrations in two surface regions and the stratosphere. Solar radiation
             modification is represented as a perturbation to atmospheric transport efficiency,
             so when you adjust the SRM controls you are testing how altered vertical exchange
-            and cross-boundary mixing reshape regional air quality.
+            and cross-boundary mixing reshape regional air quality. The diagnostics below compare
+            the no-SRM baseline with the active scenario, show how final concentrations respond
+            across a sweep of SAI strength, and estimate how air-quality controllability changes
+            in response to emission perturbations. For further explanation of the physical model
+            and variables, see the
+            <a href="https://github.com/shubhamvkulkarni/SRM_Comparison_Demo/blob/main/physical_model.md">physical model notes</a>.
             </div>
-            """,
+            """
+            ,
             unsafe_allow_html=True,
-        )
-        st.markdown(
-            """
-            The diagnostics below compare the no-SRM baseline with the active scenario,
-            show how final concentrations respond across a sweep of SAI strength, and
-            estimate how air-quality controllability changes in response to emission
-            perturbations.
-            """
-        )
-        st.markdown(
-            r"""
-            For further explanation of the physical model and variables, see the
-            [physical model notes](https://github.com/shubhamvkulkarni/SRM_Comparison_Demo/blob/main/physical_model.md).
-            """
         )
         st.markdown("</div>", unsafe_allow_html=True)
     with right_col:
